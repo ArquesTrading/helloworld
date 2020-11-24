@@ -1,17 +1,14 @@
+# app.py
+
 from flask import Flask
-from flask import jsonify
-import logging
 
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    data = {
-        "message" : "Hello Arques !! "
-    }
-    return jsonify(data)
 
+@app.route("/")
+def index():
+    return "Hello World !!! "
 
 
 if __name__ == "__main__":
