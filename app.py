@@ -1,6 +1,7 @@
 # app.py
 
 from flask import Flask
+from flask import jsonify
 
 
 app = Flask(__name__)
@@ -8,7 +9,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hello World !!! "
+    data = {"message": "Hello Arqeus !"}
+    return jsonify(data)
 
 
 if __name__ == "__main__":
