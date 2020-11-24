@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    data = {"message": "Hello Arqeus !"}
+    data = {"message": "Hello Arqeus !!!"}
     return jsonify(data)
 
 
