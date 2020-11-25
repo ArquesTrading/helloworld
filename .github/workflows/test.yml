@@ -21,8 +21,8 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCE_PROJECT }}
-  GCE_INSTANCE: arques-build-test  # TODO: update to instance name
-  GCE_INSTANCE_ZONE: asia-northeast3-a	   # TODO: update to instance zone
+  GCE_INSTANCE: arques-build-test           # TODO: update to instance name
+  GCE_INSTANCE_ZONE: asia-northeast3-a	    # TODO: update to instance zone
 
 jobs:
   setup-build-publish-deploy:
