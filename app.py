@@ -2,6 +2,7 @@
 
 from flask import Flask
 from flask import jsonify
+import datetime
 
 
 app = Flask(__name__)
@@ -9,7 +10,16 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    data = {"message": "Hello Arqeus Hahahahahaha !!!"}
+    _datetime_utc = datetime.datetime.now(tz=datetime.timezone.utc)
+    time = datetime.datetime.strftime(_datetime, format)
+    timesplit = time.split(".")
+    try:
+        if len(timesplit[1].replace("Z", "")) > 3:
+            time = timesplit[0] + "." + timesplit[1][:3] + "Z"
+    except:
+        pass
+
+    data = {"message": "Hello Arqeus Hahahahahaha !!!", "time": time}
     return jsonify(data)
 
 
