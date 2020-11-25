@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     _datetime_utc = datetime.datetime.now(tz=datetime.timezone.utc)
-    time = datetime.datetime.strftime(_datetime, format)
+    time = datetime.datetime.strftime(_datetime_utc, "%Y-%m-%dT%H:%M:%S.%fZ")
     timesplit = time.split(".")
     try:
         if len(timesplit[1].replace("Z", "")) > 3:
