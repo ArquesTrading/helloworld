@@ -21,6 +21,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCE_PROJECT }}
+  BUILD_ID: ${{ secrets.GCE_SYSTEM_NAME }}
   GCE_INSTANCE: arques-build-test  # TODO: update to instance name
   GCE_INSTANCE_ZONE: asia-northeast3-a	   # TODO: update to instance zone
 
@@ -48,13 +49,28 @@ jobs:
       # Build the Docker image
       - name: Build
         run: |-
-          docker build --tag "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA" .
+          docker build --tag "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA" .
       # Push the Docker image to Google Container Registry
       - name: Publish
         run: |-
-          docker push "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA"
-      - name: Deploy
+          docker push "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA"
+      - name: Deploy1
         run: |-
-          gcloud compute instances update-container "$GCE_INSTANCE" \
+          gcloud compute instances update-container "arques-build-test" \
             --zone "$GCE_INSTANCE_ZONE" \
-            --container-image "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA"
+            --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA"                      
+      - name: Deploy2
+        run: |-
+          gcloud compute instances update-container "arques-build-test2" \
+            --zone "$GCE_INSTANCE_ZONE" \
+            --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA"                      
+      - name: Deploy3
+        run: |-
+          gcloud compute instances update-container "arques-build-test3" \
+            --zone "$GCE_INSTANCE_ZONE" \
+            --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA"                      
+      - name: Deploy4
+        run: |-
+          gcloud compute instances update-container "arques-build-test4" \
+            --zone "$GCE_INSTANCE_ZONE" \
+            --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA"                      
