@@ -19,7 +19,10 @@ def index():
     except:
         pass
 
-    data = {"message": "Hello Arqeus Multi-Servers By Cloud Build And Github Actions", "time": time}
+    data = {
+        "message": "Hello Arqeus Multi-Servers By Cloud Build And Github Actions",
+        "time": time,
+    }
     return jsonify(data)
 
 
