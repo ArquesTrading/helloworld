@@ -19,7 +19,7 @@ def index():
     except:
         pass
 
-    data = {"message": "Hello Arqeus !!!!", "time": time}
+    data = {"message": "Hello Arqeus !!", "time": time}
     return jsonify(data)
 
 
