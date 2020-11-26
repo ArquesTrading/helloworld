@@ -1,5 +1,6 @@
 FROM python
 RUN apt-get -y update && \
+    apt-get install -y --no-install-recommends apt-utils && \
     apt-get install -y vim && \
     apt-get install -y telnet && \
     apt-get install -y wget
