@@ -20,7 +20,7 @@ def index():
         pass
 
     data = {
-        "message": "Hello Arqeus Multi-Servers By Cloud Build And Github Actions",
+        "message": "Hello Arqeus",
         "time": time,
     }
     return jsonify(data)
