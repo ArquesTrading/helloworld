@@ -65,5 +65,5 @@ jobs:
           gcloud compute instances update-container "dev-arques-build-test3" \
             --zone "$GCE_INSTANCE_ZONE" \
             --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA" \
-            --container-args="app.py" \
-            --container-args="INSU KIM"
+            --container-arg="app.py" \
+            --container-arg="INSU KIM"
