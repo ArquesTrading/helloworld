@@ -60,8 +60,10 @@ jobs:
           gcloud compute instances update-container "dev-arques-build-test" \
             --zone "$GCE_INSTANCE_ZONE" \
             --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA"                      
-      - name: Deploy2
+      - name: Deploy3
         run: |-
-          gcloud compute instances update-container "dev-arques-build-test2" \
+          gcloud compute instances update-container "dev-arques-build-test3" \
             --zone "$GCE_INSTANCE_ZONE" \
-            --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA"
+            --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA" \
+            --container-args="app.py" \
+            --container-args="INSU KIM"
