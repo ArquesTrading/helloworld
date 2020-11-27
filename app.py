@@ -3,9 +3,11 @@
 from flask import Flask
 from flask import jsonify
 import datetime
+import sys
 
 
 app = Flask(__name__)
+who = ""
 
 
 @app.route("/")
@@ -20,11 +22,16 @@ def index():
         pass
 
     data = {
-        "message": "Hello Arqeus!!! ci/cd by github actions",
+        "message": "Hello {who} ci/cd by github actions".format(who=who),
         "time": time,
     }
     return jsonify(data)
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        who = sys.argv[1]
+    else:
+        who = "Arques"
+
     app.run(host="0.0.0.0", debug=False)
