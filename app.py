@@ -1,7 +1,7 @@
 # app.py
 
 from flask import Flask
-from flask import jsonify
+from flask import jsonify, request
 import datetime
 import sys
 
@@ -15,7 +15,7 @@ def index():
     _datetime_utc = datetime.datetime.now(tz=datetime.timezone.utc)
     time = datetime.datetime.strftime(_datetime_utc, "%Y-%m-%dT%H:%M:%S.%fZ")
     timesplit = time.split(".")
-    ip_address = flask.request.remote_addr
+    ip_address = request.remote_addr
 
     try:
         if len(timesplit[1].replace("Z", "")) > 3:
