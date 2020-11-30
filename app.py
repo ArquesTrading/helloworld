@@ -2,6 +2,7 @@
 
 from flask import Flask
 from flask import jsonify, request
+import socket
 import datetime
 import sys
 
@@ -15,7 +16,9 @@ def index():
     _datetime_utc = datetime.datetime.now(tz=datetime.timezone.utc)
     time = datetime.datetime.strftime(_datetime_utc, "%Y-%m-%dT%H:%M:%S.%fZ")
     timesplit = time.split(".")
-    ip_address = request.remote_addr
+    visitor_ip_address = request.remote_addr
+    hostname = socket.gethostname()
+    server_ip_address = socket.gethostbyname(hostname)
 
     try:
         if len(timesplit[1].replace("Z", "")) > 3:
@@ -26,7 +29,8 @@ def index():
     data = {
         "message": "Hello {who} ci/cd by github actions".format(who=who),
         "time": time,
-        "ip_address": ip_address,
+        "visit_ip_address": visitor_ip_address,
+        "host_ip_address": server_ip_address,
     }
     return jsonify(data)
 
