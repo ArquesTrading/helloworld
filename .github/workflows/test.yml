@@ -59,7 +59,7 @@ jobs:
         run: |-
           gcloud compute instances update-container "dev-arques-build-test" \
             --zone "$GCE_INSTANCE_ZONE" \
-            --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA"         
+            --container-image "gcr.io/$PROJECT_ID/$BUILD_ID:$GITHUB_SHA" \       
             --container-arg="app.py" \
             --container-arg="Arques Company"             
       - name: Deploy2
