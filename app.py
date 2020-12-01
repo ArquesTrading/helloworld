@@ -38,13 +38,13 @@ def index():
 if __name__ == "__main__":
     if len(sys.argv) == 2:
         # 명령어 인수를 통해 전달 받은 값을 전략명으로 처리하면 될 것 같다.
-        port = sys.argv[1]
-        who = "Arques"
+        who = sys.argv[1]
+        port = 80
     elif len(sys.argv) > 2:
-        port = sys.argv[1]
-        who = sys.argv[2]
+        who = sys.argv[1]
+        port = sys.argv[2]
     else:
-        port = 5000
+        port = 80
         who = "Arques"
 
     app.run(host="0.0.0.0", debug=False, port=port)
