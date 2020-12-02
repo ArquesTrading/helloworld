@@ -5,10 +5,16 @@ from flask import jsonify, request
 import socket
 import datetime
 import sys
+import logging
+import json
 
 
 app = Flask(__name__)
 who = ""
+
+logging.basicConfig(
+    format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO
+)
 
 
 @app.route("/")
@@ -30,8 +36,12 @@ def index():
         "message": "Hello {who} ci/cd by github actions".format(who=who),
         "time": time,
         "visit_ip_address": visitor_ip_address,
-        "host_ip_address": server_ip_address,
     }
+
+    logging.info(
+        "host_ip_address : " + server_ip_address + " || data = " + json.dumps(data)
+    )
+
     return jsonify(data)
 
 
