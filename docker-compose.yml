@@ -1,0 +1,23 @@
+version: '3.6'
+services:
+    web1:
+        image: arques/helloworld:latest
+        container_name: helloworld
+        environment:
+          - who=dev
+        ports:
+          - 8080:5000
+        command: nohup python -u /app/app.py
+        # logging:
+        #   driver: "fluentd"
+        #   options:
+        #     fluentd-address: 172.30.1.77:24224
+        #     tag: python.command
+    web2:
+        image: arques/helloworld:latest
+        container_name: hellotech
+        environment: 
+          - who=tech
+        ports:
+          - 8081:5000
+        command: nohup python -u /app/app.py

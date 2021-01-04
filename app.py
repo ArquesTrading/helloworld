@@ -7,7 +7,7 @@ import datetime
 import sys
 import logging
 import json
-
+import os
 
 app = Flask(__name__)
 who = ""
@@ -15,6 +15,17 @@ who = ""
 logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s", level=logging.INFO
 )
+
+try:
+    who = os.environ["who"]
+except:
+    who = "Arques"
+
+try:
+    port = os.environ["port"]
+except:
+    port = 8080
+
 
 
 @app.route("/")
@@ -46,15 +57,20 @@ def index():
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 2:
-        # 명령어 인수를 통해 전달 받은 값을 전략명으로 처리하면 될 것 같다.
-        who = sys.argv[1]
-        port = 80
-    elif len(sys.argv) > 2:
-        who = sys.argv[1]
-        port = sys.argv[2]
-    else:
-        port = 80
-        who = "Arques"
+    # if len(sys.argv) == 2:
+    #     # 명령어 인수를 통해 전달 받은 값을 전략명으로 처리하면 될 것 같다.
+    #     who = sys.argv[1]
+    #     port = 80
+    # elif len(sys.argv) > 2:
+    #     who = sys.argv[1]
+    #     port = sys.argv[2]
+    # else:
+    #     port = 80
+    #     who = "Arques"
 
-    app.run(host="0.0.0.0", debug=False, port=port)
+    # extra = {"strategyname": who}
+    # logger = logging.LoggerAdapter(logger, extra)
+
+    # app.run(host="0.0.0.0", debug=False, port=port)
+    logging.info(who)
+    app.run(host="0.0.0.0", debug=False)
