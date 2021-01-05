@@ -44,7 +44,7 @@ def index():
         pass
 
     data = {
-        "message": "Hello {who} ci/cd by jenkins".format(who=who),
+        "message": "Hello {who} ci/cd by jenkins. ".format(who=who),
         "time": time,
         "visit_ip_address": visitor_ip_address,
     }
