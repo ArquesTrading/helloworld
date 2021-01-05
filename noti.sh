@@ -12,6 +12,7 @@ then
     message="${now}${newline}All${space}build${space}success"
 else
     message="${now}${newline}${container}${space}build${space}success"
+fi
 request="${url}?channel=${channel}&message=${message}"
 # echo $url
 # echo $channel
