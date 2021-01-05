@@ -4,7 +4,7 @@ services:
         image: arques/helloworld:latest
         container_name: helloworld
         environment:
-          - who=Arques_Dev
+          - who=ArquesDev
         ports:
           - 8080:5000
         command: nohup python -u /app/app.py
@@ -17,7 +17,7 @@ services:
         image: arques/helloworld:latest
         container_name: hellotech
         environment: 
-          - who=Arques_Tech
+          - who=ArquesTech
         ports:
           - 8081:5000
         command: nohup python -u /app/app.py
