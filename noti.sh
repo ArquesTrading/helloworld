@@ -14,9 +14,5 @@ else
     message="${now}${newline}${container}${space}build${space}success"
 fi
 request="${url}?channel=${channel}&message=${message}"
-# echo $url
-# echo $channel
-# echo $message
-# echo $request
 raw="$($CURL $CURLARGS $request)"
 exit 0
