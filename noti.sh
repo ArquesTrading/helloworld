@@ -7,7 +7,7 @@ channel=%23build
 space=%20
 newline=%0A
 now=$(date +%F_%H:%M:%S)
-if [ $container eq '' ]
+if [ $container -eq '' ]
 then
     message="${now}${newline}All${space}build${space}success"
 else
